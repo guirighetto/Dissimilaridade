@@ -42,10 +42,10 @@ int next_comb(int comb[], int k, int n)
 
 int** nchoosek(int* array, int nbRef, int nbComb)
 {
-	int** M = (int**)malloc(200*sizeof(int*));
+	int** M = (int**)calloc(nbComb+1,sizeof(int*));
 	int i=0;
 	for(i=1;i<200;i++)
-		M[i] = (int*)malloc(3*sizeof(int));
+		M[i] = (int*)calloc(3,sizeof(int));
 
 	M[1][1] = array[0]+1;
 	M[1][2] = array[1]+1;
