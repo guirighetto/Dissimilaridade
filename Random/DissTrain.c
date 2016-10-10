@@ -10,14 +10,7 @@ int execDissTrain(char* nameFileTrain, int nbAutoresTest, int nbRef, int nbAmost
 	int contVN = 0;
 	int contVP = 0;
 
-	/*int* vectorNbRef = (int*)malloc(nbRef+1*sizeof(int));
-	int t;
-	for(t=0;t<nbRef;t++)
-	    vectorNbRef[t] = t;*/
-
 	int nbCombPos = fatorial(nbRef) / (fatorial(2) * fatorial(nbRef - 2));
-
-	//int** comb = nchoosek(vectorNbRef,nbAmostrasAutor,nbCombPos);
 
     int t;
     int* vectorNbAmos = (int*)malloc(nbAmostrasAutor+1*sizeof(int));  
@@ -29,12 +22,6 @@ int execDissTrain(char* nameFileTrain, int nbAutoresTest, int nbRef, int nbAmost
     int** comb = nchoosek(vectorNbAmos,nbAmostrasAutor,nbCombPosAlea); 
 
     srand (time(NULL));
-
- /*   int y=0;
-    for(y=1;y<nbCombPosAlea;y++)
-        printf("%d %d\n",comb[y][1],comb[y][2]);
-
-    return 0;*/
 
     int* fragAleatP2 = (int*)calloc(nbCombPosAlea+1,sizeof(int));
     int* AutorAleat = (int*)calloc((nbAutores*2)+1,sizeof(int));
@@ -70,23 +57,11 @@ int execDissTrain(char* nameFileTrain, int nbAutoresTest, int nbRef, int nbAmost
     int i;
     for(i=1;i<nbAutores+1;i++)
     {
-       /* int* fragAleatP = (int*)malloc(nbAmostrasAutor+1*sizeof(int));
-        for(t=1;t<nbAmostrasAutor+1;t++)
-            fragAleatP[t] = 1;*/
         int* fragAleatP = (int*)calloc(nbCombPosAlea+1,sizeof(int));
         
         int n;
         for(n=1;n<nbCombPos+1;n++)
         {                                        
-            /*int posFrag1 = comb[n][1];
-            int posFrag2 = comb[n][2];
-
-            int frag1 = fragAleatP[posFrag1];
-            int frag2 = fragAleatP[posFrag2];*/
-
-            /*frag1 = rand() % nbAmostrasAutor + 1;
-            printf("frag1 = %d\n",frag1);
-            return 0;*/
             int nbAlea;
 
             while(1)
@@ -154,32 +129,6 @@ int execDissTrain(char* nameFileTrain, int nbAutoresTest, int nbRef, int nbAmost
             fprintf(f1,"\n");
 
         }
-
-
-    /*    int k;
-        for(k=1;k<nbRef+1;k++)
-        {
-            nextAutor++;
-
-            int tb;
-            for(tb=1;tb<nbAmNeg+1;tb++)
-            {
-                int pFragPos = posFragN[tb];
-                int pFragNeg = negFrag[tb];
-
-                printf("pFragNeg  = %d\n",negFrag[tb]);
-                printf("M = %f\n", M[pFragPos+(nbAmostrasAutor*(i-1))][1]);
-
-                fprintf(f1,"%s ","-1");
-
-                int m;
-                for(m=1;m<nbFeat;m++)
-                    fprintf(f1," %d:%f",m, Abs(M[pFragPos+(nbAmostrasAutor*(i-1))][m] - M[pFragNeg+(nbAmostrasAutor*(negativeAuthors[nextAutor]-1))][m]));
-                fprintf(f1,"\n");
-
-            }
-             
-        }*/
             
     }
     fclose(f1);

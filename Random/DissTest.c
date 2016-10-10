@@ -11,10 +11,7 @@ int execDissTest(char* nameFileTest, int nbAutoresTest, int nbRef, int nbAmostra
 	int contVN = 0;
 	int contVP = 0;
 
-
     int nbCombPos = fatorial(nbRef) / (fatorial(2) * fatorial(nbRef - 2));
-
-    //int** comb = nchoosek(vectorNbRef,nbAmostrasAutor,nbCombPos);
 
     int t;
     int* vectorNbAmos = (int*)malloc(nbAmostrasAutor+1*sizeof(int));  
@@ -106,38 +103,6 @@ int execDissTest(char* nameFileTest, int nbAutoresTest, int nbRef, int nbAmostra
                 }
             }
         }
-
-
-    	/*int k;
-    	for(k=1;k<nbAutores+1;k++)
-    	{
-    		if(k != i)
-    		{
-	    		int ri;
-	    		for(ri=1;ri<nbRef+1;ri++)
-	    		{
-	    			int* negFrag = createArray(nbRef+1);
-	    			int* posFragN = createArray(nbRef+1);
-
-	    			int tb;
-	    			for(tb=1;tb<nbAmNeg+1;tb++)
-	    			{
-	    				int pFragPos = posFragN[tb];
-                        int pFragNeg = negFrag[ri];
-
-                        contLin++;
-
-                        fprintf(f1,"%s","-1");
-
-                        int m;
-                        for (m=1;m<nbFeat;m++)
-                        	fprintf(f1," %d:%f", m, Abs(M2[pFragPos+(nbAmostrasAutor*(i-1))][m] - M2[pFragNeg+(nbAmostrasAutor*(k-1))][m])); 
-                        fprintf(f1,"\n");
-
-	    			}
-	    		}
-    		}
-    	}*/
     }
     fclose(f1);
     free(M2);
