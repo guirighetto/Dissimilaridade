@@ -10,14 +10,14 @@ int execDissTrain(char* nameFileTrain, int nbAutoresTest, int nbRef, int nbAmost
 	int contVN = 0;
 	int contVP = 0;
 
-	int nbCombPos = fatorial(nbRef) / (fatorial(2) * fatorial(nbRef - 2));
+	int nbCombPos = choose(nbRef);
 
     int t;
     int* vectorNbAmos = (int*)malloc(nbAmostrasAutor+1*sizeof(int));  
     for(t=0;t<nbAmostrasAutor;t++)
         vectorNbAmos[t] = t;
 
-    int nbCombPosAlea = fatorial(nbAmostrasAutor) / (fatorial(2) * fatorial(nbAmostrasAutor - 2));
+    int nbCombPosAlea = choose(nbAmostrasAutor);
 
     int** comb = nchoosek(vectorNbAmos,nbAmostrasAutor,nbCombPosAlea); 
 
