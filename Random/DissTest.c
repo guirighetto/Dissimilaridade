@@ -11,14 +11,14 @@ int execDissTest(char* nameFileTest, int nbAutoresTest, int nbRef, int nbAmostra
 	int contVN = 0;
 	int contVP = 0;
 
-    int nbCombPos = choose(nbRef);
+    int nbCombPos = choose(nbRef,2);
 
     int t;
     int* vectorNbAmos = (int*)malloc(nbAmostrasAutor+1*sizeof(int));  
     for(t=0;t<nbAmostrasAutor;t++)
         vectorNbAmos[t] = t;
 
-    int nbCombPosAlea = choose(nbAmostrasAutor);
+    int nbCombPosAlea = choose(nbAmostrasAutor,2);
 
     int** comb = nchoosek(vectorNbAmos,nbAmostrasAutor,nbCombPosAlea); 
 
@@ -38,10 +38,13 @@ int execDissTest(char* nameFileTest, int nbAutoresTest, int nbRef, int nbAmostra
 
     FILE* f1 = fopen(name,"w");
 
+    int* fragAleatP = (int*)calloc(nbCombPosAlea+1,sizeof(int));
+
     int i,l,c,a,b;
     for(i=1;i<nbAutores+1;i++)
     {
-        int* fragAleatP = (int*)calloc(nbCombPosAlea+1,sizeof(int));
+        for(t=0;t<nbCombPosAlea+1;t++)
+            fragAleatP[t] = 0;
 
         int n;
         for(n=1;n<nbCombPos+1;n++)
